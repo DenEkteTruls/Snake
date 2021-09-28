@@ -3,8 +3,6 @@ from classes.tiles import Tiles
 from classes.food import Food
 from classes.snake import Snake
 
-import time
-
 game = Game(500, 500, 50)
 
 tiles = Tiles(game.width, game.height, game.tile_size)
