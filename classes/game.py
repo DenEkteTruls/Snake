@@ -2,10 +2,11 @@ import pygame
 
 class Game:
   
-  def __init__(self, width : int, height : int, tile_size : int = 50) -> None:
+  def __init__(self, width : int, tile_size : int = 50) -> None:
 
+    self.score = 0
     self.width = width
-    self.height = height
+    self.height = width
     self.clock = pygame.time.Clock()
     self.screen = pygame.display.set_mode((self.width, self.height))
     self.keys_pressed = {'w': False, 's': False, 'a': False, 'd': False}
@@ -60,3 +61,4 @@ class Game:
   def cleanUp(self) -> None:
 
     print("Snake game closing ...")
+    print(f"You got {self.score} points!")

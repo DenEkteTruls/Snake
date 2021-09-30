@@ -9,8 +9,8 @@ class Tiles:
     self.screen_height = screen_height
 
     self.tiles = []
-    self.spots = [e for e in range(screen_width) if e%50 == 0]
-  
+    self.spots = [e for e in range(screen_width) if e%self.tile_size == 0 and screen_width - e >= self.tile_size]
+
     self.renderTiles()
 
 

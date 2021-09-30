@@ -8,7 +8,8 @@ class Snake:
     self.game = game
     self.spots = spots
     self.snake_size = snake_size
-    self.snake_margin = 5
+    self.snake_size = self.game.tile_size*0.8
+    self.snake_margin = self.game.tile_size*0.1
     
     self.tails = []
     self.tails_to_add = []
@@ -67,18 +68,21 @@ class Snake:
     elif self.keys_pressed['s'] : self.move(0, 1)
     elif self.keys_pressed['a'] : self.move(-1, 0)
     elif self.keys_pressed['d'] : self.move(1, 0)
+    
+    pygame.display.set_caption(f"Snake by Casper  |  Score: {self.game.score}")
 
 
-  def check_if_eaten(self, food) -> None:
+  def check_if_eaten(self, foods : list) -> None:
 
-    if self.head.colliderect(food.food):
-      self.add_tail(food.food)
-      food.update()
-
+    for food in foods:
+      if self.head.colliderect(food.food):
+        self.add_tail(food.food)
+        food.update()
+        self.game.score += 1
   
   def render(self, screen : object) -> None:
     
-    pygame.draw.rect(screen, self.color, self.head)
+    pygame.draw.rect(screen, self.color, self.head, 0, border_radius=10)
 
     for tail in self.tails:
       pygame.draw.rect(screen, self.color, tail)
