@@ -16,11 +16,13 @@ class Game:
 
 
   def activate_key(self, key : chr) -> None:
+  
     self.keys_pressed = {'w': False, 's': False, 'a': False, 'd': False}
     self.keys_pressed[key] = True
 
 
   def event_handler(self) -> None:
+    
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         self.running = False
